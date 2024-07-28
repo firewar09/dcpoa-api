@@ -19,6 +19,6 @@ describe('AppController (e2e)', () => {
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
-      .expect('Hello World!');
+      .expect('Teste da API dcpoa-api, esta mensagem deve aparecer apenas quando eu chamar a aplicação sem nenhum outro parametro.');
   });
 });
