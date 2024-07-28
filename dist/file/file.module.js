@@ -16,7 +16,7 @@ exports.FileModule = FileModule;
 exports.FileModule = FileModule = __decorate([
     (0, common_1.Module)({
         controllers: [file_controller_1.FileController],
-        providers: [file_service_1.FileService]
+        providers: [file_service_1.FileService],
     })
 ], FileModule);
 //# sourceMappingURL=file.module.js.map
