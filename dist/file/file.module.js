@@ -8,15 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FileModule = void 0;
 const common_1 = require("@nestjs/common");
+const platform_express_1 = require("@nestjs/platform-express");
 const file_controller_1 = require("./file.controller");
-const file_service_1 = require("./file.service");
 let FileModule = class FileModule {
 };
 exports.FileModule = FileModule;
 exports.FileModule = FileModule = __decorate([
     (0, common_1.Module)({
+        imports: [
+            platform_express_1.MulterModule.register({
+                dest: './uploads',
+            }),
+        ],
         controllers: [file_controller_1.FileController],
-        providers: [file_service_1.FileService],
     })
 ], FileModule);
 //# sourceMappingURL=file.module.js.map

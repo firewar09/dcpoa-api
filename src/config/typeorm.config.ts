@@ -1,12 +1,7 @@
+// src/config/typeorm.config.ts
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { Gadinho } from '../gadinhos/gadinho.entity';
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
-  type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: 'postgres',
-  password: 'teste1234',
-  database: 'postgres',
-  entities: [__dirname + '/../**/*.entity.{js,ts}'],
-  synchronize: true,
+ 
 };

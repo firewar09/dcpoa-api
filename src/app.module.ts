@@ -5,6 +5,7 @@ import { FileModule } from './file/file.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typeorm.config';
 import { GadinhosModule } from './gadinhos/gadinhos.module';
+import { Gadinho } from './gadinhos/gadinho.entity';
 
 @Module({
   imports: [
@@ -13,18 +14,17 @@ import { GadinhosModule } from './gadinhos/gadinhos.module';
       serveRoot: '/uploads', // caminho base para servir os arquivos
     }),
     FileModule,
-    
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'teste1234',
-      database: 'postgres',
-      entities: [__dirname + '/../**/*.entity.{js,ts}'],
-      synchronize: true,
-    }),
-    GadinhosModule,
+
+      TypeOrmModule.forRoot({ type: 'postgres',
+        host: 'localhost',
+        port: 5432,
+        schema: 'public',
+        username: 'postgres',
+        password: 'teste1234',
+        database: 'postgres',
+        entities: [Gadinho],
+        synchronize: false,}),  // Use a configuração importada
+      GadinhosModule,
   ],
 })
 

@@ -11,44 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var FileController_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FileController = void 0;
 const common_1 = require("@nestjs/common");
 const platform_express_1 = require("@nestjs/platform-express");
-const multer_1 = require("multer");
-const uuid_1 = require("uuid");
-const path_1 = require("path");
-let FileController = FileController_1 = class FileController {
-    constructor() {
-        this.logger = new common_1.Logger(FileController_1.name);
-    }
+let FileController = class FileController {
     uploadFile(file) {
-        this.logger.log(`File uploaded: ${file.originalname}`);
-        return {
-            message: 'File uploaded successfully!',
-            filePath: `/uploads/${file.filename}`,
-        };
+        return { filename: file.filename, path: file.path };
     }
 };
 exports.FileController = FileController;
 __decorate([
     (0, common_1.Post)('upload'),
-    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file', {
-        storage: (0, multer_1.diskStorage)({
-            destination: './uploads',
-            filename: (req, file, cb) => {
-                const filename = `${(0, uuid_1.v4)()}${(0, path_1.extname)(file.originalname)}`;
-                cb(null, filename);
-            },
-        }),
-    })),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file')),
     __param(0, (0, common_1.UploadedFile)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], FileController.prototype, "uploadFile", null);
-exports.FileController = FileController = FileController_1 = __decorate([
+exports.FileController = FileController = __decorate([
     (0, common_1.Controller)('file')
 ], FileController);
 //# sourceMappingURL=file.controller.js.map
