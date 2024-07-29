@@ -10,7 +10,7 @@ export class GadinhoService {
     private gadinhoRepository: Repository<Gadinho>,
   ) {}
 
-  async findOneById(id: number): Promise<Gadinho> {
-    return this.gadinhoRepository.findOne(id);
+  async findGadinhoById(id: number): Promise<Gadinho> {
+    return this.gadinhoRepository.findOneBy({ id });
   }
 }

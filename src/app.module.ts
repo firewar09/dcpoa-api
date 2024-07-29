@@ -13,12 +13,17 @@ import { GadinhosModule } from './gadinhos/gadinhos.module';
       serveRoot: '/uploads', // caminho base para servir os arquivos
     }),
     FileModule,
-  ],
-})
-
-@Module({
-  imports: [
-    TypeOrmModule.forRoot(typeOrmConfig),
+    
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'teste1234',
+      database: 'postgres',
+      entities: [__dirname + '/../**/*.entity.{js,ts}'],
+      synchronize: true,
+    }),
     GadinhosModule,
   ],
 })
