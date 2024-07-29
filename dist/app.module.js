@@ -12,8 +12,8 @@ const serve_static_1 = require("@nestjs/serve-static");
 const path_1 = require("path");
 const file_module_1 = require("./file/file.module");
 const typeorm_1 = require("@nestjs/typeorm");
-const typeorm_config_1 = require("./config/typeorm.config");
 const gadinhos_module_1 = require("./gadinhos/gadinhos.module");
+const gadinho_entity_1 = require("./gadinhos/gadinho.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -25,7 +25,16 @@ exports.AppModule = AppModule = __decorate([
                 serveRoot: '/uploads',
             }),
             file_module_1.FileModule,
-            typeorm_1.TypeOrmModule.forRoot(typeorm_config_1.typeOrmConfig),
+            typeorm_1.TypeOrmModule.forRoot({ type: 'postgres',
+                host: 'localhost',
+                port: 5432,
+                schema: 'public',
+                username: 'postgres',
+                password: 'teste1234',
+                database: 'postgres',
+                entities: [gadinho_entity_1.Gadinhos],
+                logging: true,
+                synchronize: false, }),
             gadinhos_module_1.GadinhosModule,
         ],
     })

@@ -5,7 +5,7 @@ import { FileModule } from './file/file.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typeorm.config';
 import { GadinhosModule } from './gadinhos/gadinhos.module';
-import { Gadinho } from './gadinhos/gadinho.entity';
+import { Gadinhos } from './gadinhos/gadinho.entity';
 
 @Module({
   imports: [
@@ -22,7 +22,8 @@ import { Gadinho } from './gadinhos/gadinho.entity';
         username: 'postgres',
         password: 'teste1234',
         database: 'postgres',
-        entities: [Gadinho],
+        entities: [Gadinhos],
+        logging: true,
         synchronize: false,}),  // Use a configuração importada
       GadinhosModule,
   ],
