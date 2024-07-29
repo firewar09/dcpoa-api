@@ -2,6 +2,9 @@ import { Module } from '@nestjs/common';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { FileModule } from './file/file.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { typeOrmConfig } from './config/typeorm.config';
+import { GadinhosModule } from './gadinhos/gadinhos.module';
 
 @Module({
   imports: [
@@ -12,4 +15,12 @@ import { FileModule } from './file/file.module';
     FileModule,
   ],
 })
+
+@Module({
+  imports: [
+    TypeOrmModule.forRoot(typeOrmConfig),
+    GadinhosModule,
+  ],
+})
+
 export class AppModule {}
